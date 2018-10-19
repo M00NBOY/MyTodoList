@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyToDoList</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="icon" href="todo.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="body">
+    <section class="main">
+      <div id="app" class="--container">
+        <div class="title">
+          <h1>{{ title }} / <span>( {{ taskTitle }} )</span></h1>
+
+        </div>
+
+        <div class="tabs">
+          <button class="button is-link"
+            v-on:click='displayAll'>Toutes les tasks</button>
+          <button class="button is-link"
+            v-on:click='displayTodo'>Task à compléter</button>
+          <button class="button is-link"
+            v-on:click='displayDo'>Task complétées</button>
+        </div>
+
+        <div class="numbers">
+          <h3>Nombre total de task: {{ tasks.length }}</h3>
+          <h3>Nombre de task accomplie: {{ allChecked.length }}</h3>
+        </div>
+
+        <div class="btn-all">
+          <button class="button is-small is-primary is-outlined is-rounded"
+            v-on:click='checkAll'>{{ btn_all }}</button>
+          <button class="button is-small is-outlined is-danger is-rounded"
+            v-on:click='deleteAll'>tout supprimer</button>
+        </div>
+
+        <div class="add-item">
+          <input v-model='newItem' v-on:keyup.enter='addItem'/>
+          <button @click.prevent='addItem'>+</button>
+        </div>
+
+        <div class="tasks-list">
+          <!-- ALL TASKS -->
+          <ul v-if='wichList===1'>
+            <li v-bind:class="{done : task.checked}"
+                v-for="(task, index) in tasks"
+                v-bind:key="tasks.id">
+              <input
+              id="check"
+              type="checkbox"
+              v-model='task.checked'>
+              {{ task.item }}
+              <button
+              class="delete is-danger"
+              v-bind:class="{delete : task.checked}"
+              v-on:click='deleteItem(index)'></button>
+            </li>
+          </ul>
+          <!-- CHECKED TASKS -->
+          <ul v-if='wichList===2' >
+              <li v-bind:class="{done : task.checked}"
+                  v-for="(task, index) in tasks"
+                  v-if="task.checked"
+                  v-bind:key="tasks.id">
+                <input
+                id="check"
+                type="checkbox"
+                v-model='task.checked'>
+                {{ task.item }}
+                <button
+                class="delete is-danger"
+                v-bind:class="{delete : task.checked}"
+                v-on:click='deleteItem(index)'></button>
+              </li>
+          </ul>
+          <!-- UNCHECKED TASKS -->
+          <ul v-if='wichList===3' >
+              <li v-bind:class="{done : task.checked}"
+                  v-for="(task, index) in tasks"
+                  v-if="!task.checked"
+                  v-bind:key="tasks.id">
+                <input
+                id="check"
+                type="checkbox"
+                v-model='task.checked'>
+                {{ task.item }}
+                <button
+                class="delete is-danger"
+                v-bind:class="{delete : task.checked}"
+                v-on:click='deleteItem(index)'></button>
+              </li>
+          </ul>
+          <p>{{ newItem }}</p>
+        </div>
+      </div>
+    </section>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

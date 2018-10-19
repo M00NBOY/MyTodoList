@@ -1,0 +1,72 @@
+.body{
+  height: 100vh;
+  font-family: Sans-Serif;
+  background-color: #202C39;
+  color: #DEE5E5;
+}
+.main{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.--container {
+  max-width: 65%;
+  min-width: 55%;
+  border: 1px #DEE5E5 solid;
+}
+.title{
+  border-bottom: 1px #DEE5E5 solid;
+  font-size: 30px;
+  color: #DEE5E5;
+}
+.title h1{
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+  color: #DEE5E5;
+}
+.title span{
+  font-size: 15px;
+  margin-left: 2%;
+  color: #DEE5E5;
+}
+.tabs{
+  border-bottom: 1px #DEE5E5 solid;
+  padding: 10px 5%;
+}
+.numbers{
+  margin: 10px 10px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px #DEE5E5 solid;
+  display: flex;
+  justify-content: space-around;
+}
+.numbers h3{
+  padding: 0 10px;
+}
+.btn-all {
+  padding: 10px 5%;
+  /* border-bottom: 1px #DEE5E5 solid; */
+}
+.btn-all button{
+  padding: 0 10px;
+}
+.add-item, .tasks-list{
+  padding: 10px 5%;
+}
+.tasks-list{
+  overflow: scroll;
+  max-height: 35vh;
+}
+
+
+.delete{
+  color: #ff3860;
+}
+
+.done {
+  color: #ff3860;
+  text-decoration: line-through;
+}
